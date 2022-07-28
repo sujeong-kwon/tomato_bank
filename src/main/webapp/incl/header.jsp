@@ -4,7 +4,7 @@
     <div class="gnb">
       <div class="left-gnb">
         <ul>
-          <li><a href="/banking">홈</a></li>
+          <li><a href="/banking/customer/main">bank</a></li>
         </ul>
       </div>
       <div class="right-gnb">

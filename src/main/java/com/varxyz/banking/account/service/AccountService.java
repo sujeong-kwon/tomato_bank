@@ -1,5 +1,7 @@
 package com.varxyz.banking.account.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,11 @@ public class AccountService {
 		accountDao.addAccount(account);
 	}
 	
+	public List<Account> getAccountsByCustomerId(long customerId){
+		return accountDao.findAccountsByCustomerId(customerId);
+	}
+	
+	public Account getAccountByAid(long aid) {
+		return accountDao.findAccountsByAid(aid);
+	}
 }

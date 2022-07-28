@@ -27,25 +27,15 @@ private JdbcTemplate jdbcTemplate;
 				customer.getName(), customer.getSsn(), customer.getPhone());		
 	}
 	
-	public List<Customer> findCustomerByIdPw(String email, String passwd) {
+	public Customer findCustomerByIdPw(String email, String passwd) {
 		String sql = "SELECT * FROM Customer WHERE email = ? AND passwd = ?";
-		List<Customer> customers = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Customer>(Customer.class){
+		Customer customer = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Customer>(Customer.class){
 		}, email, passwd);
-		System.out.println(customers);
-		return customers;		
-//		System.out.println(result);
-//		if(result.size() != 0) {
-//			System.out.println("true"+ result);
-//			return true;
-//		}else {
-//			System.out.println("false"+result);
-//			return false;
-//		}
-		
+		System.out.println(customer);
+		return customer;		
 	}
 
 	public Customer findCustomerByEmail(String email) {
-		System.out.println("다오 진입");
 		String sql = "SELECT cid, email, passwd, name, ssn, phone, regDate "
 				+ " FROM Customer WHERE email=?";
 		try {

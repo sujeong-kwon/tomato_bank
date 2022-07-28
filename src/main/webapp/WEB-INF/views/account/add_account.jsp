@@ -42,8 +42,11 @@
 	<section>
 		<h3>신규 계좌 신청</h3>
 		<div class="container">
-			<form action="add_account" method="post">
-				<label>계좌종류</label><input type="text" name="accType"><br>
+			<form action="add_account" method="post">		
+				<label>SavingsAccount</label><input type="radio" name="accType" value="S"><br>
+				<label>CheckingAccount</label><input type="radio" name="accType" value="C"><br>
+				<label>초기입금액</label><input type="text" name="balance"></br>
+				<label>비밀번호</label><input type="password" name="passwd">
 				<input type="submit" value="신청"/>
 			</form>
 		</div>

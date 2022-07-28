@@ -24,30 +24,6 @@ public class AccountDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-//	public void addAccount(Account account) {
-//		System.out.println("inserted");
-//		String sql = "INSERT INTO Account (accType, customerId, accountNum)"
-//				+ " VALUES (?, ?, ?)";
-//		SavingsAccount sa = null;
-//		CheckingAccount ca = null;
-//		Object[] args = null;
-//		int[] types = new int[] {CHAR, BIGINT, CHAR};
-//		System.out.println("inserted");
-//		if(account instanceof SavingsAccount) {
-//			sa = (SavingsAccount)account;
-//			args = new Object[] {
-//				String.valueOf(sa.getAccType()), sa.getCustomer().getCid(), sa.getAccountNum()
-//			};
-//		}else {
-//			ca = (CheckingAccount)account;
-//			args = new Object[] {
-//					String.valueOf(ca.getAccType()), ca.getCustomer().getCid(), ca.getAccountNum()
-//			};
-//		}
-//		jdbcTemplate.update(sql, args, types);
-//		System.out.println("inserted");
-//	}
-	
 	public void addAccount(Account account) {
 		String sql = "INSERT INTO Account (accountNum, accType, balance, interestRate, overAmount, customerId)"
 				+ " VALUES (?, ?, ?, ?, ?, ?)";
@@ -83,14 +59,14 @@ public class AccountDao {
 		});
 	}
 	
-	public List<Account> findAccountsBySsn(String ssn){
+	public Account findAccountsByAid(long aid){
 		String sql = "SELECT a.aid, a.customerId, a.accountNum, a.accType, "
 				+ " a.balance, a.interestRate, a.overAmount, a.regDate "
 				+ " FROM Account a INNER JOIN Customer c "
 				+ " ON a.customerId = c.cid "
-				+ " WHERE c.ssn=?";
-		return jdbcTemplate.query(sql, new CustomerAccountRowMapper(){
-		}, ssn);
+				+ " WHERE a.aid=?";
+		return jdbcTemplate.queryForObject(sql, new CustomerAccountRowMapper(){
+		}, aid);
 	}
 	
 	public List<Account> findAccountsByCustomerId(long customerId) {

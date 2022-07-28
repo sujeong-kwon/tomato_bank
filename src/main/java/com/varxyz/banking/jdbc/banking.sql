@@ -41,6 +41,8 @@ DROP TABLE Account;
 
 SELECT * FROM Account;
 
-delete from account;
+delete from customer;
+
+select * from account where customerId=1031;
 
 SELECT a.aid, a.accountNum, a.balance, a.interestRate, a.overAmount, a.accType, c.name, c.ssn, c.phone, a.regDate FROM Account a INNER JOIN Customer c ON a.customerId = c.cid WHERE c.ssn = '800111-1234567';

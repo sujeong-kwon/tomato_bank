@@ -18,12 +18,11 @@ public class CustomerService {
 		customerDao.addCustomer(customer);
 	}
 	
-	public List<Customer> isValidUser(String email, String passwd) {
+	public Customer isValidUser(String email, String passwd) {
 		return customerDao.findCustomerByIdPw(email, passwd);
 	}
 
 	public Customer getCustomerByEmail(String email) {
-		System.out.println("서비스 진입");
 		return customerDao.findCustomerByEmail(email);
 	}	
 }

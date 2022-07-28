@@ -24,6 +24,7 @@
     section {
       height: 100%;
       overflow: hidden;
+      padding-top: 150px;
     }
     .container {
       display: flex;
@@ -33,20 +34,19 @@
       margin: 0 auto;
       align-items: center;
     }
-    
-    .container .title-wrap {
-      width: 100%;
-      line-height: 60px;
-      padding-top: 150px;
-    }
 </style>
 <body>
 	<header>
-    	<%@ include file="/incl/header.jsp" %>
+	   	<%@ include file="/incl/header.jsp" %>
 	</header>
 	<section>
+		<h3>계좌 이체</h3>
 		<div class="container">
-			<div class="title-wrap">${name}님이 로그인되었습니다.</div>
+			<form action="transfer_account" method="post">		
+				<label>출금계좌</label><input type="text" placeholder="${account.accountNum}"></br>
+				<label>출금액</label><input type="password" name="passwd">
+				<input type="submit" value="신청"/>
+			</form>
 		</div>
 	</section>
 </body>

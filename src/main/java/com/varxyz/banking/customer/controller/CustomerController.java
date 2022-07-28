@@ -21,6 +21,12 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerService customerService;
+	String email;
+	
+	@GetMapping("/customer/main")
+	public String main(HttpServletRequest request) {
+		return "customer/main";
+	}
 	
 	// 회원가입
 	@GetMapping("/customer/add_customer")
@@ -33,7 +39,7 @@ public class CustomerController {
 		System.out.println(customer.getEmail());
 		customerService.addCustomer(customer);
 		model.addAttribute("customer", customer);
-		return "home";
+		return "redirect:/";
 	}
 	
 	// 로그인
@@ -45,21 +51,21 @@ public class CustomerController {
 	@PostMapping("/customer/login")
 	public String login(HttpServletRequest request) {
 		String email = request.getParameter("email");
-		System.out.println(email);
 		String passwd = request.getParameter("passwd");
-		List<Customer> customers = customerService.isValidUser(email, passwd);
+		Customer customer = customerService.isValidUser(email, passwd);
 		
-		if(customers.size() == 0) {
+		if(customer == null) {
 			System.out.println("x");
 			return "customer/add_customer";
 		}
 		
 		HttpSession session = request.getSession(true);
 		session.setAttribute("email", email);
-		session.setAttribute("cid", customers.get(0).getCid());
-		request.setAttribute("name", customers.get(0).getName());
+		session.setAttribute("passwd", passwd);
+		session.setAttribute("cid", customer.getCid());
+		request.setAttribute("name", customer.getName());
 		
-		return "customer/login_result";
+		return "customer/main";
 	}
 	
 	// 로그아웃
@@ -67,6 +73,6 @@ public class CustomerController {
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		session.invalidate();
-		return "home";
+		return "redirect:/";
 	}
 }
