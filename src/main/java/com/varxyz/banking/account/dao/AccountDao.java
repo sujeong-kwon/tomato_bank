@@ -2,12 +2,16 @@ package com.varxyz.banking.account.dao;
 
 import static java.sql.Types.*;
 
+import java.sql.PreparedStatement;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import com.varxyz.banking.account.domain.Account;
@@ -77,5 +81,27 @@ public class AccountDao {
 				+ " WHERE a.customerId=?";
 		return jdbcTemplate.query(sql, new CustomerAccountRowMapper(){
 		}, customerId);
+	}
+	
+	public Account findAccountsByAccountNum(String accountNum){
+		String sql = "SELECT a.aid, a.customerId, a.accountNum, a.accType, "
+				+ " a.balance, a.interestRate, a.overAmount, a.regDate "
+				+ " FROM Account a INNER JOIN Customer c "
+				+ " ON a.customerId = c.cid "
+				+ " WHERE a.accountNum=?";
+		return jdbcTemplate.queryForObject(sql, new CustomerAccountRowMapper(){
+		}, accountNum);
+	}
+	
+	public void updateAccount(Account account) {
+		String sql = "UPDATE Account SET balance=? WHERE aid=?";
+		Object[] args = null;
+		account.getBalance();
+		account.getAid();
+		args = new Object[] {
+				account.getBalance(),
+				account.getAid()
+		};
+		jdbcTemplate.update(sql, args);
 	}
 }

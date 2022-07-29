@@ -25,4 +25,12 @@ public class AccountService {
 	public Account getAccountByAid(long aid) {
 		return accountDao.findAccountsByAid(aid);
 	}
+	
+	public Account getAccountByAccountNum(String accountNum) {
+		return accountDao.findAccountsByAccountNum(accountNum);
+	}
+	
+	public void updateAccount(Account account) {
+		accountDao.updateAccount(account);
+	}
 }

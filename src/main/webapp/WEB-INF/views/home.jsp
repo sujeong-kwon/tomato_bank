@@ -91,7 +91,7 @@
       justify-content: center;
       border-style: none;
       font-size: 20px;
-      background: #417D7A;
+      background: tomato;
       color: white;
       border-radius: 30px;
       width: 150px;
@@ -100,7 +100,7 @@
     }
     .i-btn > .in-btn {
       font-size: 20px;
-      background: #417D7A;
+      background: tomato;
       color: white;
       border-radius: 30px;
       width: 150px;

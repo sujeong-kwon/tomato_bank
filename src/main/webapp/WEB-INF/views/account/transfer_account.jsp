@@ -44,8 +44,10 @@
 		<div class="container">
 			<form action="transfer_account" method="post">		
 				<label>출금계좌</label><input type="text" placeholder="${account.accountNum}"></br>
-				<label>출금액</label><input type="password" name="passwd">
-				<input type="submit" value="신청"/>
+				<label>출금액</label><input type="text" name="amount"></br>
+				<label>입금계좌</label><input type="text" name="de_account"></br>
+				<label>비밀번호</label><input type="password" name="passwd">
+				<input type="submit" value="확인"/>
 			</form>
 		</div>
 	</section>

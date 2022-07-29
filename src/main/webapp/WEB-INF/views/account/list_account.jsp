@@ -27,7 +27,7 @@
            <td>${acc.accountNum}</td>
            <td>${acc.accType}</td>
            <td>${acc.balance}</td>
-           <td><a href="/banking/account/transfer_account?aid=${acc.aid}" class="in-btn">이체하기</a></td>
+           <td><a href="/banking/account/transfer_account?aid=${acc.aid}&accType=${acc.accType}" class="in-btn">이체하기</a></td>
          </tr>
     </c:forEach>
     </tbody>
