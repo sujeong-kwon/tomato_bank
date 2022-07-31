@@ -66,7 +66,6 @@ public class TransferAccountController {
 			System.out.println(accType_char);
 			CheckingAccount ca = new CheckingAccount();
 			ca = (CheckingAccount) accountService.getAccountByAid(aid_long);
-			ca.withdraw(amount_double);
 			double from_account_balance = ca.withdraw(amount_double);
 			ca.setBalance(from_account_balance);
 			ca.setAid(aid_long);

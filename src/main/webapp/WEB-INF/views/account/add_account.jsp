@@ -10,46 +10,53 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/header.css'/>"/>
 </head>
 <style>
-	@font-face {
-	  src: url("/chacha/css/Jalnan.ttf");
-	  font-family: "Jalnan";
-	}
-	.gnb ul li a {
-	  line-height: 70px;
-	  font-size: 20px;
-	  color: white;
-	  font-family: "Jalnan";
-	} 
+body { overflow: auto; }
 
-    section {
-      height: 100%;
-      overflow: hidden;
-      padding-top: 150px;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      height: 100%;
-      width: 700px;
-      margin: 0 auto;
-      align-items: center;
-    }
+section {
+  width: 100%;
+  height: calc(100vh - 30px);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+  padding-top: 150px;
+}
+
+.type{
+  padding-top: 20px;
+}
+
+.box{
+	display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 30px 10px 30px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
 </style>
 <body>
 	<header>
 	   	<%@ include file="/incl/header.jsp" %>
 	</header>
 	<section>
-		<h3>신규 계좌 신청</h3>
 		<div class="container">
-			<form action="add_account" method="post">		
+			<h3>신규 계좌 신청</h3>
+			<form action="add_account" method="post">
+				<div class="type">
 				<label>SavingsAccount</label><input type="radio" name="accType" value="S"><br>
 				<label>CheckingAccount</label><input type="radio" name="accType" value="C"><br>
-				<label>초기입금액</label><input type="text" name="balance"></br>
-				<label>비밀번호</label><input type="password" name="passwd">
+				</div>					
+				<label>초기입금액</label><input type="text" name="balance" class="box"></br>
+				<label>비밀번호</label><input type="password" name="passwd" class="box">
 				<input type="submit" value="신청"/>
 			</form>
-		</div>
+		</div>		
 	</section>
 </body>
 </html>

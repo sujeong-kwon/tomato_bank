@@ -14,6 +14,7 @@
 	  src: url("/chacha/css/Jalnan.ttf");
 	  font-family: "Jalnan";
 	}
+	
 	.gnb ul li a {
 	  line-height: 70px;
 	  font-size: 20px;
