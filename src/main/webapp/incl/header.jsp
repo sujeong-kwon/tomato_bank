@@ -10,6 +10,7 @@
       <div class="right-gnb">
         <ul>
           <li><a href="/banking/account/add_account">계좌 신청</a></li>
+          <li><a href="/banking/account/list_account">계좌 조회</a></li>
           <li><a href="/banking/customer/logout">로그아웃</a></li>
         </ul>
       </div>

@@ -24,8 +24,14 @@ public class CustomerController {
 	String email;
 	
 	@GetMapping("/customer/main")
-	public String main(HttpServletRequest request) {
-		return "customer/main";
+	public ModelAndView main(HttpServletRequest request, ModelAndView mav) {
+		HttpSession session = request.getSession(false);
+		email = (String) session.getAttribute("email");
+		Customer customer = new Customer();
+		customer = customerService.getCustomerByEmail(email);
+		mav.addObject("customer", customer);
+		mav.setViewName("customer/main");
+		return mav;
 	}
 	
 	// 회원가입
@@ -65,7 +71,7 @@ public class CustomerController {
 		session.setAttribute("cid", customer.getCid());
 		request.setAttribute("name", customer.getName());
 		
-		return "customer/main";
+		return "redirect:/customer/main";
 	}
 	
 	// 로그아웃

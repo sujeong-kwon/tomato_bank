@@ -33,9 +33,9 @@ public class ListAccountController {
 		HttpSession session = request.getSession(false);		
 		cid = (long) session.getAttribute("cid");
 		List<Account> account = new ArrayList<Account>();
-			account  = accountService.getAccountsByCustomerId(cid);
-			mav.addObject("account", account);
-			mav.setViewName("account/list_account");
-			return mav;
+		account  = accountService.getAccountsByCustomerId(cid);
+		mav.addObject("account", account);
+		mav.setViewName("account/list_account");
+		return mav;
 	}
 }

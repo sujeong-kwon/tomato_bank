@@ -86,7 +86,6 @@
 	</header>
 	<div id="boxes">   
        <div id="leftbox">
-       		
        		<div class="button-wrap">
 	       		<div class="button">
 		            <a href="/banking/account/add_account" class="in-btn">계좌신청</a>
@@ -99,11 +98,10 @@
        		</div>
        </div>       
        <div id="middlebox">
-       	   <!--
        	   <div class="logo_box">
         		<img src="<spring:url value='/resources/img/tomato.png'/>">
+				<h1>${customer.name}님,안녕하세요!</h1>
     		</div> 
-       	    -->
        </div>
        <div id="rightbox">
            <div class="button-wrap">
